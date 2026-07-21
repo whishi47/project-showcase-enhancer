@@ -1,65 +1,46 @@
-# 个人项目包装与面试备战 (Project Showcase Enhancer)
+<p align="center">
+  <img src="./images/logo.svg" width="120" alt="Project Showcase Enhancer" />
+</p>
 
-> 将 Demo 级个人项目推演为商用级完整产品，生成可用于简历网站 / GitHub 的项目展示文档，并结合 JD + 简历输出项目相关的面试备考手册。
+<h1 align="center">个人项目包装与面试备战 · Project Showcase Enhancer</h1>
 
----
+<p align="center">
+  <b>把 Demo 级个人项目推演为商用级完整产品，一键生成项目展示文档与面试备考手册。脚本做确定性扫描，大模型做深度语义理解，四阶段闭环从读代码直通面试准备。</b>
+</p>
 
-## 目录
+<p align="center">
+  <a href="#chinese">🇨🇳 中文</a> &nbsp;|&nbsp;
+  <a href="#english">🇬🇧 English</a>
+</p>
 
-- [中文文档](#中文文档)
-  - [这是什么](#这是什么)
-  - [为什么需要它](#为什么需要它)
-  - [核心特性](#核心特性)
-  - [适用人群](#适用人群)
-  - [安装](#安装)
-  - [使用方法](#使用方法)
-  - [工作流程：四阶段闭环](#工作流程四阶段闭环)
-  - [内置脚本](#内置脚本)
-  - [混合架构](#混合架构)
-  - [模型要求](#模型要求)
-  - [目录结构](#目录结构)
-  - [输出示例](#输出示例)
-  - [常见问题](#常见问题)
-  - [许可证](#许可证)
-- [English](#english)
-  - [What it is](#what-it-is)
-  - [Why you need it](#why-you-need-it)
-  - [Key features](#key-features)
-  - [Who it is for](#who-it-is-for)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Workflow: four-stage loop](#workflow-four-stage-loop)
-  - [Bundled scripts](#bundled-scripts)
-  - [Hybrid architecture](#hybrid-architecture)
-  - [Model requirements](#model-requirements)
-  - [Directory layout](#directory-layout)
-  - [Example output](#example-output)
-  - [FAQ](#faq)
-  - [License](#license)
+<p align="center">
+  <img alt="WorkBuddy" src="https://img.shields.io/badge/WorkBuddy-Skill-00b4d8" />
+  <img alt="Stages" src="https://img.shields.io/badge/stages-4%20phases-8b5cf6" />
+  <img alt="Architecture" src="https://img.shields.io/badge/architecture-hybrid-10b981" />
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen" />
+  <img alt="Models" src="https://img.shields.io/badge/models-Opus%204.6%20%7C%20DeepSeek%20v4%20Pro%20%7C%20GPT--5.6-ff6b35" />
+</p>
 
 ---
 
-# 中文文档
+<h2 id="chinese">🇨🇳 中文</h2>
 
-## 这是什么
+## 这是什么？
 
-**个人项目包装与面试备战** 是一个 WorkBuddy 技能（Skill），面向开发者，解决一个具体问题：
+> **个人项目包装与面试备战** 是一个 WorkBuddy 技能（Skill）。它不是「扫一遍代码吐模板」的工具，而是一套**人机协作的工作流**：先读懂你的代码与原始意图，再和你一起把 Demo 推演成商用级产品方案，最后产出两份可直接使用的文档——**项目展示文档**和**面试备考手册**。
 
-> 你有一个能跑的个人项目 / Demo，但不知道怎么把它**讲清楚、写专业、准备面试**。
+它融合了两个不同的源头：
 
-它不是"扫一遍代码吐模板"的工具，而是一套**人机协作的工作流**：先读懂你的代码与原始意图，再和你一起把 Demo 推演成商用级产品方案，最后产出两份可直接使用的文档——**项目展示文档**和**面试备考手册**。
+- 源自 **code-project-analyzer** —— 代码扫描与项目文档生成的原始脚本与思路；
+- 源自 **JD + 简历 → 面试题预测助手** —— JD + 简历 → 面试题的 STAR 框架与结构化分析方法。
 
-## 为什么需要它
+真实痛点：你有一个能跑的个人项目 / Demo，但不知道怎么把它**讲清楚、写专业、准备面试**。代码能跑，项目说明却只会写「基于 React + Node 做的博客」，提炼不出亮点；Demo 离商用差得远却说不清差在哪；面试官一追问技术选型理由就露怯。
 
-个人开发者在整理项目时常遇到三件事：
+这个技能把这三件事一次性解决：**分析代码 → 推演商用 → 生成展示文档 → 预测面试题**。
 
-1. **看不懂自己的项目该写什么**：代码能跑，但项目说明只会写"基于 React + Node 做的博客"，提炼不出亮点和架构思维。
-2. **Demo 离商用差得远却说不清差在哪**：缺权限、缺异常处理、缺测试、架构粗糙，但不知道优先级。
-3. **面试官一追问就露怯**：简历写了"主导开发 XX 项目"，被问技术选型理由、最大挑战、重来会改什么，答不上来。
+## 亮点
 
-本技能把这三件事一次性解决：分析代码 → 推演商用 → 生成展示文档 → 预测面试题。
-
-## 核心特性
+> **扫描脚本提供确定性地图，大模型在地图上做深度推理——两者结合，才既快又准。** —— 本技能的核心设计
 
 - **真实读懂代码**：先用脚本做确定性扫描，再由大模型阅读关键源文件，理解业务逻辑、模块划分、数据流，而不是靠文件名猜。
 - **Demo 到商用的推演**：结合你的产品愿景，列出功能 / 工程化 / 运维三方面的差距，给出分阶段演进路线图（MVP → 完善 → 商用）。
@@ -67,125 +48,121 @@
 - **面试备考手册**：结合 JD 和简历，预测 15 道项目相关面试题（必问 / 针对性 / 追问三类），每题给考察点、答题策略和 STAR 框架。
 - **混合架构**：脚本做快而稳的扫描，大模型做深而准的推理，兼顾速度与质量，也不浪费 token。
 
-## 适用人群
+## 上手
 
-- 准备求职面试、需要把个人项目写进简历的开发者
-- 维护作品集网站 / 技术博客，希望项目介绍更专业的人
-- 想把练手 Demo 升级为可展示、可部署产品的全栈工程师
-- 需要结合目标岗位 JD 预判面试官会追问什么的技术候选人
-
-## 安装
-
-本技能以目录形式存放，复制到 WorkBuddy 的用户级技能目录即可，无需编译或安装依赖。
-
-**方式一：从 GitHub 克隆**
+### 前提
 
 ```bash
-# 克隆到用户级技能目录（Windows 示例，使用 Git Bash）
+# 1. 已安装 WorkBuddy 客户端（本技能为 WorkBuddy 用户级技能）
+# 2. 建议在「高推理模型」下使用（见「配置」）
+#    推荐：Claude Opus 4.6 / DeepSeek v4 Pro / GPT-5.6
+
+# 3.（可选）如需解析简历文件，安装 Python 依赖
+pip install pdfplumber python-docx pypdf
+```
+
+### 安装技能
+
+```bash
+# 方式一：从 GitHub 克隆到用户级技能目录
 git clone https://github.com/whishi47/project-showcase-enhancer.git \
   "$HOME/.workbuddy/skills/project-showcase-enhancer"
+
+# 方式二：从压缩包解压
+#   下载 project-showcase-enhancer.zip，解压到 $HOME/.workbuddy/skills/project-showcase-enhancer/
+#   确保目录下直接包含 SKILL.md
+
+# 方式三：SkillHub 市场安装
+#   在 SkillHub 搜索 project-showcase-enhancer 并安装
 ```
 
-**方式二：从压缩包解压**
+> `$HOME` 在 Windows 上通常是 `C:\Users\你的用户名`。技能目录也可能是 `.codebuddy\skills`，以你使用的客户端为准。安装后无需编译或安装依赖，在 WorkBuddy 对话中直接用自然语言触发即可。
 
-1. 下载 `project-showcase-enhancer.zip`
-2. 解压到 `$HOME/.workbuddy/skills/project-showcase-enhancer/`
-3. 确保目录下直接包含 `SKILL.md`
+### 使用
 
-**方式三：SkillHub 安装**
+| 触发方式 | 操作 | 效果 |
+|---|---|---|
+| 💬 自然语言 | "分析一下我的项目" | 启动技能，进入阶段 0 收集信息 |
+| 💬 自然语言 | "帮我把这个项目推演到商用" | 直接进入阶段 2 商用推演 |
+| 💬 自然语言 | "生成一份项目展示文档" | 跳过推演，直接产出展示文档 |
+| 💬 自然语言 | "结合我的 JD 准备这个项目的面试" | 进入阶段 4 面试备考 |
+| 📎 简历文件 | 上传 PDF / DOCX / TXT | 解析为纯文本，供面试准备阶段使用 |
 
-在 SkillHub 市场搜索 `project-showcase-enhancer` 并安装。
+首次触发时，技能会一次性问你四件事（不用逐条回答）：**项目路径**、**使用场景**（简历 / 面试 / GitHub / 作品集）、**目标岗位方向**（可选）、**特别说明**（你的原始想法、想突出的点）。
 
-> `$HOME` 在 Windows 上通常是 `C:\Users\你的用户名`。技能目录也可能是 `.codebuddy\skills`，以你使用的客户端为准。
-
-安装后，在 WorkBuddy 对话中直接用自然语言触发即可（见"使用方法"）。
-
-## 使用方法
-
-在 WorkBuddy 对话里说下面任意一句，技能就会启动：
-
-- "分析一下我的项目"
-- "帮我把这个项目推演到商用"
-- "生成一份项目展示文档"
-- "结合我的 JD 准备这个项目的面试"
-
-首次触发时，技能会一次性问你四件事（不用逐条回答）：
-
-1. **项目路径**：要分析的项目在哪个目录？
-2. **使用场景**：个人简历 / 面试 / GitHub 展示 / 作品集网站？
-3. **目标岗位方向**（可选）：前端 / 后端 / 全栈 / 架构等，用于面试题的针对性。
-4. **特别说明**（可选）：你对这个项目的原始想法、想突出的点。
-
-如果你同时提供了简历文件（PDF / DOCX / TXT），技能会先解析成纯文本，供面试准备阶段使用。
-
-## 工作流程：四阶段闭环
-
-### 阶段 0：项目定位
-
-收集项目路径、使用场景、目标岗位、原始意图。如有简历文件，运行 `scripts/parse_file.py` 解析。
-
-### 阶段 1：深度代码理解
-
-**1.1 快速扫描（脚本层）**——运行 `scripts/scan_project.js`，秒级输出结构化 JSON，包含技术栈、依赖、目录树（带职责标注）、入口文件、配置文件、README 原文。
-
-**1.2 深度阅读（大模型层）**——基于扫描结果，阅读关键源文件，分析：
-
-- 每个关键依赖的用途、版本是否合理、有无替代方案
-- 模块划分与数据流
-- 入口文件的启动流程、路由、中间件
-- 配置文件里的部署环境与第三方服务
-- 从 README 提取的产品原始意图
-
-**1.3 代码质量评估**——对 8 个维度打分（1–10）并给出具体证据（文件名 + 行号）：
-
-| 维度 | 维度 |
-|------|------|
-| 代码组织与模块化 | 错误处理 |
-| 类型安全 | 测试覆盖 |
-| 安全性 | 性能设计 |
-| 可部署性 | 文档完整度 |
-
-**1.4 现状总结**——用一段话描述项目当前状态，和你确认后进入下一阶段。
-
-### 阶段 2：商用推演对话
-
-**2.1 理解愿景**——通过对话了解目标用户、核心卖点、商业模式（可选）、上线紧迫度与 MVP 范围。
-
-**2.2 差距分析**——列出三类差距：
+## 工作原理
 
 ```
-【功能差距】缺失的功能点 + 优先级(P0/P1/P2) + 说明
-【工程化差距】缺失的工程实践 + 为什么需要 + 建议方案
-【运维差距】缺失的运维能力 + 为什么需要 + 建议方案
+┌──────────────────────────────────────────────────────────┐
+│             project-showcase-enhancer                      │
+│   输入：项目目录 +（可选）JD 文件 + 简历文件                  │
+└───────────────────────────┬──────────────────────────────┘
+                            ▼
+   ┌──────────────────────────────────────────────┐
+   │ ① 深度代码理解                                  │
+   │   scripts/scan_project.js（字典扫描 → JSON）    │
+   │   + 大模型语义阅读关键源文件                     │
+   │   → 代码现状画像（含 8 维质量评分）             │
+   └──────────────────────┬───────────────────────┘
+                           ▼
+   ┌──────────────────────────────────────────────┐
+   │ ② 商用级推演（对话）                           │
+   │   愿景澄清 → 差距分析(P0/P1/P2) → 演进路线图    │
+   └──────────────────────┬───────────────────────┘
+                           ▼
+   ┌──────────────────────────────────────────────┐
+   │ ③ 项目展示文档                                 │
+   │   assets/showcase-template.md 填充             │
+   │   → {项目}-展示文档.md                         │
+   └──────────────────────┬───────────────────────┘
+                           ▼
+   ┌──────────────────────────────────────────────┐
+   │ ④ 面试视角审视                                 │
+   │   JD + 简历 → 15 道项目面试题 + STAR           │
+   │   → {项目}-面试备考手册.md                     │
+   └──────────────────────────────────────────────┘
 ```
 
-**2.3 演进路线图**——分三阶段（MVP → 完善 → 商用），每阶段列关键任务。
+**阶段 ① 深度代码理解**：脚本 `scan_project.js` 秒级输出结构化 JSON（技术栈、依赖、带职责标注的目录树、入口/配置文件、README 原文）；大模型再基于该「地图」阅读关键源文件，分析模块划分、数据流、启动流程、配置里的第三方服务，并从 README 提取产品原始意图；最后对 8 个维度（代码组织、类型安全、安全性、可部署性、错误处理、测试覆盖、性能设计、文档完整度）按 1–10 打分，附文件名 + 行号证据。
 
-**2.4 确认**——展示完整差距分析与路线图，确认后进入下一阶段。
+**阶段 ② 商用推演对话**：通过对话澄清目标用户、核心卖点、商业模式（可选）、MVP 范围；列出三类差距（功能 / 工程化 / 运维，每项标 P0/P1/P2 优先级）；给出三阶段演进路线图（MVP → 完善 → 商用）。
 
-### 阶段 3：生成交付物
+**阶段 ③ 生成交付物**：读取 `assets/showcase-template.md` 填充亮点、功能模块、技术栈选型理由、架构设计、部署说明；读取 `assets/interview-prep-template.md` 生成 15 道面试题。
 
-**3.1 项目展示文档**——读取 `assets/showcase-template.md` 填充：
+**阶段 ④ 面试视角审视**：结合 JD 与简历，预判面试官看到该项目会追问的技术题 / 项目题，每题输出「考察点 → 答题策略 → STAR 框架」。
 
-- 核心亮点（5 个，每个有代码或架构证据）
-- 功能模块（按业务领域组织）
-- 技术栈（每项说明选型理由）
-- 架构设计（整体架构 + 数据流 + 核心决策）
-- 演进记录、部署说明
+## 四阶段详解
 
-输出文件：`{项目名称}-展示文档.md`
+| 阶段 | 名称 | 输入 | 关键动作 | 产出 |
+|---|---|---|---|---|
+| ① | 深度代码理解 | 项目目录 | 脚本扫描 + 大模型语义阅读 + 8 维质量评分 | 代码现状画像（JSON + 评分） |
+| ② | 商用推演对话 | 现状画像 + 你的愿景 | 差距分析(P0/P1/P2) + 演进路线图 | 演进方案 |
+| ③ | 项目展示文档 | 现状 + 演进方案 | 按模板填充亮点 / 模块 / 技术栈 / 架构 | {项目}-展示文档.md |
+| ④ | 面试视角审视 | 展示文档 + JD + 简历 | 预测 15 题（必问/针对性/追问）+ STAR | {项目}-面试备考手册.md |
 
-**3.2 面试备考手册**——读取 `assets/interview-prep-template.md`，生成 15 道题：
+## 配置
 
-- 必问题（5 题）：介绍项目、负责部分、最大挑战、技术选型理由、重来会改什么
-- 针对性题（5 题）：关联代码低分维度或差距项
-- 追问题（5 题）：关联具体代码文件或设计决策
+技能要求**高推理能力**的大模型。**推荐模型**：
 
-每题结构：题目 → 考察点 → 答题策略 → STAR 框架。
+- Claude Opus 4.6
+- DeepSeek v4 Pro
+- GPT-5.6（或同等级别）
 
-输出文件：`{项目名称}-面试备考手册.md`
+低推理模型仍能用，但会导致：代码理解肤浅、商用推演模板化、面试题预测质量差。技能在阶段 0 会提示你确认当前模型，若不满足建议切换后再用。
 
-**3.3 最终确认**——展示两份文档摘要，确认准确性与格式。
+> 💡 建议：把常用的高推理模型设为 WorkBuddy 默认，或在触发技能前手动切换，以获得最佳推演与文档质量。
+
+## 为什么不用其他方案？
+
+| 维度 | 本技能 | 纯 code-analyzer | 手写 README | 纯 interview-prep |
+|---|---|---|---|---|
+| 代码理解 | ✅ 脚本 + 大模型深度 | ⚠️ 仅文件名字典 | ❌ 手动 | ❌ 不涉及 |
+| Demo→商用推演 | ✅ 对话共创路线图 | ❌ | ❌ | ❌ |
+| 展示文档质量 | ✅ 专人专案、有证据 | ⚠️ 模板化、泛化 | ⚠️ 取决于写作水平 | ❌ |
+| 面试预测 | ✅ 紧扣本项目代码 | ❌ | ❌ | ⚠️ 仅通用 JD 题 |
+| 混合架构省 token | ✅ | ❌ | — | ❌ |
+
+**本技能的定位**：你不是「替换」code-project-analyzer 或 interview-prep，而是把「读代码 → 推演商用 → 写展示 → 备面试」四步一次性跑通。扫描脚本提供确定性地图，大模型在地图上做深度推理，最终产出两份拿得出手的文档。
 
 ## 内置脚本
 
@@ -228,31 +205,26 @@ python scripts/parse_file.py ./resume.pdf
 
 依赖：`pdfplumber` 或 `pypdf`（PDF）、`python-docx`（DOCX）。未安装时脚本会提示安装命令。
 
-## 混合架构
+## 开发
 
-本技能同时用脚本和大模型，而不是只用其中一种：
+```bash
+# 克隆项目
+git clone https://github.com/whishi47/project-showcase-enhancer.git
+cd project-showcase-enhancer
 
-- **确定性扫描层（脚本）**：`scan_project.js` 覆盖 60+ 技术栈标志文件、40+ 目录职责映射、入口与配置文件自动检测、package.json 依赖全量提取，秒级产出 JSON。稳定、可重复、不消耗 token。
-- **语义推理层（大模型）**：在扫描结果之上做真正的代码语义理解与推演，避免纯字典匹配的模板化缺陷。
+# 仅修改 SKILL.md 与 assets 模板即可调整工作流，无需编译
+# 若要调扫描逻辑，编辑 scripts/scan_project.js
+# 若要调简历解析，编辑 scripts/parse_file.py
+```
 
-两者结合，扫描给大模型一份"地图"，大模型在地图上做深度分析。
-
-## 模型要求
-
-本技能依赖高推理能力的大模型。**推荐在高推理模型下使用**：
-
-- Claude Opus 4.6
-- DeepSeek v4 Pro
-- GPT-5.6（或同等级别）
-
-低推理模型可能导致：代码理解肤浅、商用推演模板化、面试题预测质量差。技能启动时会在阶段 0 提示你确认当前模型，若不满足建议切换后再用。
-
-## 目录结构
+技能目录结构：
 
 ```
 project-showcase-enhancer/
 ├── SKILL.md                          # 技能主文件（工作流定义）
 ├── README.md                         # 本文档
+├── images/
+│   └── logo.svg                      # 文档用 logo
 ├── scripts/
 │   ├── scan_project.js               # 项目扫描器：字典匹配 → JSON
 │   └── parse_file.py                 # 简历解析器：PDF/DOCX/TXT → 文本
@@ -261,72 +233,46 @@ project-showcase-enhancer/
     └── interview-prep-template.md    # 面试备考手册模板
 ```
 
-## 输出示例
+## 发布
 
-**项目展示文档**片段：
+```bash
+# 方式一：SkillHub 网页发布
+#   进入 https://skillhub.cn ，上传打包好的 project-showcase-enhancer.zip
+#   Slug: project-showcase-enhancer，显示名称：个人项目包装与面试备战
 
-```markdown
-## 核心亮点
-1. 基于 WebSocket 的实时协作：在 `src/server/ws.js` 用单 Room 管理连接，
-   支持 200+ 并发不掉线（压测证据见 deploy/load-test.md）。
-2. 类型安全的端到端数据流：前后端共享 `types/` 下的 TS 接口，减少 80% 接口联调错误。
-...
+# 方式二：SkillHub CLI 发布
+#   登录后执行 skillhub publish ./project-showcase-enhancer
+
+# 重新打包（需 skill-creator 的 package_skill.py）
+python package_skill.py ./project-showcase-enhancer ./dist
 ```
 
-**面试备考手册**片段：
+> 发布前记得同步更新 SKILL.md 中的 `version` 字段。
 
-```markdown
-### 必问题 3：项目遇到的最大技术挑战是什么？
-- 考察点：解决问题的深度与复盘能力
-- 答题策略：用 STAR 讲一个具体困难，突出你的决策
-- STAR：
-  - Situation：实时同步在弱网下频繁冲突
-  - Task：保证多端数据一致
-  - Action：引入 CRDT（具体见 src/sync/crdt.ts）
-  - Result：冲突率从 12% 降到 0.3%
-```
+## 协议
 
-## 常见问题
-
-**Q：一定要用高推理模型吗？**
-A：不是必须，但建议。低推理模型仍能用，只是分析和推演的质量会下降。
-
-**Q：我的项目不是 Web 应用，能用吗？**
-A：能。扫描脚本覆盖多种技术栈标志文件，大模型也能理解非 Web 项目（CLI 工具、库、脚本等）。
-
-**Q：简历文件必须是 PDF 吗？**
-A：支持 PDF、DOCX、TXT。没有简历文件也能用，只是面试备考会少一份 JD 匹配的输入。
-
-**Q：输出的文档会乱编内容吗？**
-A：不会。技能约束：展示文档的亮点必须有代码或架构依据，面试题必须关联项目中的具体文件。
-
-## 许可证
-
-本项目以 MIT 许可证开源。详见 [LICENSE](./LICENSE)。
+MIT © 2026
 
 ---
 
-# English
+<h2 id="english">🇬🇧 English</h2>
 
-## What it is
+## What is this?
 
-**Project Showcase Enhancer** is a WorkBuddy skill for developers. It solves one concrete problem:
+> **Project Showcase Enhancer** is a WorkBuddy skill. It is not a "scan the code and emit a template" tool. It is a **human-in-the-loop workflow**: first it reads your code and your original intent, then it works with you to evolve the demo into a commercial-grade product plan, and finally it produces two ready-to-use documents — a **project showcase document** and an **interview prep guide**.
 
-> You have a working personal project or demo, but you do not know how to **explain it clearly, write it professionally, or prepare for interviews about it.**
+It merges two distinct sources:
 
-It is not a "scan the code and emit a template" tool. It is a **human-in-the-loop workflow**: first it reads your code and your original intent, then it works with you to evolve the demo into a commercial-grade product plan, and finally it produces two ready-to-use documents — a **project showcase document** and an **interview prep guide**.
+- From **code-project-analyzer** — the original script and ideas for code scanning and project documentation.
+- From **JD + Resume → Interview Question Predictor** — the STAR framework and structured analysis method for JD + resume → interview questions.
 
-## Why you need it
+The real pain point: you have a working personal project or demo, but you do not know how to **explain it clearly, write it professionally, or prepare for interviews about it**. The code runs, but the project description says only "a blog built with React + Node," with no way to surface the highlights; a demo is far from shippable yet you cannot say what is missing; you freeze when an interviewer asks why a technology was chosen.
 
-Individual developers hit three problems when organizing their projects:
+This skill handles all three in one pass: **analyze code → evolve to commercial → generate showcase doc → predict interview questions**.
 
-1. **They cannot write about their own project.** The code runs, but the project description says only "a blog built with React + Node," with no way to surface the highlights or the architectural thinking.
-2. **They cannot say what separates a demo from a shippable product.** Permissions, error handling, tests, and a rough architecture are all missing, but the priorities are unclear.
-3. **They freeze when an interviewer follows up.** The resume says "led development of project X," but they cannot answer why a technology was chosen, what the hardest challenge was, or what they would change.
+## Highlights
 
-This skill handles all three in one pass: analyze code → evolve to commercial → generate showcase doc → predict interview questions.
-
-## Key features
+> **The scan script provides a deterministic map; the model does deep reasoning on that map — together they are both fast and accurate.** — the core design of this skill
 
 - **Real code comprehension:** a script does a deterministic scan, then the model reads the key source files to understand business logic, module boundaries, and data flow — not guesswork from file names.
 - **Demo-to-commercial evolution:** given your product vision, it lists gaps across functionality, engineering, and operations, then gives a phased roadmap (MVP → polish → commercial).
@@ -334,125 +280,121 @@ This skill handles all three in one pass: analyze code → evolve to commercial 
 - **Interview prep guide:** given a JD and a resume, it predicts 15 project-specific interview questions (must-ask / targeted / follow-up), each with the point being tested, an answer strategy, and a STAR framework.
 - **Hybrid architecture:** a script does the fast, stable scan; the model does the deep, accurate reasoning — balancing speed and quality while saving tokens.
 
-## Who it is for
+## Get started
 
-- Developers preparing for job interviews who need to put personal projects on a resume
-- People maintaining a portfolio site or tech blog who want more professional project write-ups
-- Full-stack engineers who want to upgrade a practice demo into a presentable, deployable product
-- Technical candidates who need to predict, from a target JD, what an interviewer will ask
-
-## Installation
-
-The skill ships as a directory. Copy it into WorkBuddy's user-level skills directory. No build step or dependency install is required.
-
-**Option 1: Clone from GitHub**
+### Prerequisites
 
 ```bash
-# Clone into the user-level skills directory (Windows example, Git Bash)
+# 1. WorkBuddy client installed (this is a WorkBuddy user-level skill)
+# 2. Recommended to run under a "high-reasoning model" (see Configuration)
+#    Recommended: Claude Opus 4.6 / DeepSeek v4 Pro / GPT-5.6
+
+# 3. (Optional) to parse resume files, install Python dependencies
+pip install pdfplumber python-docx pypdf
+```
+
+### Install the skill
+
+```bash
+# Option 1: clone into the user-level skills directory
 git clone https://github.com/whishi47/project-showcase-enhancer.git \
   "$HOME/.workbuddy/skills/project-showcase-enhancer"
+
+# Option 2: extract from the zip
+#   Download project-showcase-enhancer.zip, extract to $HOME/.workbuddy/skills/project-showcase-enhancer/
+#   Make sure SKILL.md sits directly inside that directory
+
+# Option 3: install from SkillHub
+#   Search for project-showcase-enhancer on SkillHub and install it
 ```
 
-**Option 2: Extract from the zip**
+> On Windows, `$HOME` is usually `C:\Users\your-username`. The skills directory may also be `.codebuddy\skills` depending on your client. No build step or dependency install is required; trigger the skill with plain language in a WorkBuddy conversation.
 
-1. Download `project-showcase-enhancer.zip`
-2. Extract it to `$HOME/.workbuddy/skills/project-showcase-enhancer/`
-3. Make sure `SKILL.md` sits directly inside that directory
+### Usage
 
-**Option 3: Install from SkillHub**
+| Trigger | Action | Result |
+|---|---|---|
+| 💬 Natural language | "Analyze my project" | Start skill, enter Stage 0 to collect info |
+| 💬 Natural language | "Help me evolve this project to commercial grade" | Jump to Stage 2 commercial evolution |
+| 💬 Natural language | "Generate a project showcase document" | Skip evolution, produce showcase doc |
+| 💬 Natural language | "Prepare me for an interview on this project using my JD" | Enter Stage 4 prep |
+| 📎 Resume file | Upload PDF / DOCX / TXT | Parsed to text for the interview-prep stage |
 
-Search for `project-showcase-enhancer` on SkillHub and install it.
+On first trigger, the skill asks four things at once (answer them together): **project path**, **use case** (resume / interview / GitHub / portfolio), **target role** (optional), **notes** (your original idea, points to emphasize).
 
-> On Windows, `$HOME` is usually `C:\Users\your-username`. The skills directory may also be `.codebuddy\skills` depending on your client.
-
-After installation, trigger the skill with plain language in a WorkBuddy conversation (see Usage).
-
-## Usage
-
-Say any of the following in a WorkBuddy conversation to start the skill:
-
-- "Analyze my project"
-- "Help me evolve this project to commercial grade"
-- "Generate a project showcase document"
-- "Prepare me for an interview on this project using my JD"
-
-On first trigger, the skill asks four things at once (answer them together, not one by one):
-
-1. **Project path:** which directory holds the project to analyze?
-2. **Use case:** personal resume / interview / GitHub showcase / portfolio site?
-3. **Target role** (optional): frontend / backend / full-stack / architecture — used to target the interview questions.
-4. **Notes** (optional): your original idea for the project, or points you want emphasized.
-
-If you also provide a resume file (PDF / DOCX / TXT), the skill parses it to plain text first for the interview-prep stage.
-
-## Workflow: four-stage loop
-
-### Stage 0: Project scoping
-
-Collect the project path, use case, target role, and original intent. If a resume file is provided, run `scripts/parse_file.py` to parse it.
-
-### Stage 1: Deep code comprehension
-
-**1.1 Quick scan (script):** run `scripts/scan_project.js` to emit a structured JSON in seconds — tech stack, dependencies, directory tree (with role annotations), entry files, config files, and the README text.
-
-**1.2 Deep reading (model):** using the scan, read the key source files and analyze:
-
-- the purpose of each key dependency, whether its version is reasonable, and alternatives
-- module boundaries and data flow
-- the entry file's startup flow, routing, and middleware
-- deployment environment and third-party services from config files
-- the original product intent extracted from the README
-
-**1.3 Code quality assessment:** score 8 dimensions (1–10) with concrete evidence (file name + line number):
-
-| Dimension | Dimension |
-|-----------|-----------|
-| Code organization & modularity | Error handling |
-| Type safety | Test coverage |
-| Security | Performance design |
-| Deployability | Documentation completeness |
-
-**1.4 Status summary:** describe the project's current state in a paragraph, confirm with the user, then move on.
-
-### Stage 2: Commercial evolution dialogue
-
-**2.1 Understand the vision:** through dialogue, learn the target users, core selling point, business model (optional), launch urgency, and MVP scope.
-
-**2.2 Gap analysis:** list three kinds of gaps:
+## How it works
 
 ```
-[Functional gaps] missing feature + priority (P0/P1/P2) + note
-[Engineering gaps] missing practice + why needed + suggested fix
-[Operations gaps] missing capability + why needed + suggested fix
+┌──────────────────────────────────────────────────────────┐
+│             project-showcase-enhancer                      │
+│   Input: project dir + (optional) JD file + resume file    │
+└───────────────────────────┬──────────────────────────────┘
+                            ▼
+   ┌──────────────────────────────────────────────┐
+   │ ① Deep code comprehension                     │
+   │   scripts/scan_project.js (dict scan → JSON)   │
+   │   + model semantically reads key sources       │
+   │   → code status profile (with 8-dim scoring)   │
+   └──────────────────────┬───────────────────────┘
+                           ▼
+   ┌──────────────────────────────────────────────┐
+   │ ② Commercial evolution (dialogue)             │
+   │   vision → gap analysis (P0/P1/P2) → roadmap   │
+   └──────────────────────┬───────────────────────┘
+                           ▼
+   ┌──────────────────────────────────────────────┐
+   │ ③ Project showcase document                   │
+   │   fill assets/showcase-template.md             │
+   │   → {project}-showcase.md                      │
+   └──────────────────────┬───────────────────────┘
+                           ▼
+   ┌──────────────────────────────────────────────┐
+   │ ④ Interview perspective                        │
+   │   JD + resume → 15 questions + STAR            │
+   │   → {project}-interview-prep.md               │
+   └──────────────────────────────────────────────┘
 ```
 
-**2.3 Evolution roadmap:** three phases (MVP → polish → commercial), each with key tasks.
+**Stage ① Deep code comprehension:** `scan_project.js` emits structured JSON in seconds (tech stack, dependencies, role-annotated directory tree, entry/config files, README text); the model then reads the key source files on top of this "map" — module boundaries, data flow, startup flow, third-party services from config, and original intent from the README; finally scores 8 dimensions (organization, type safety, security, deployability, error handling, test coverage, performance, documentation) 1–10 with file + line evidence.
 
-**2.4 Confirm:** show the full gap analysis and roadmap, confirm, then move on.
+**Stage ② Commercial evolution:** through dialogue, clarify target users, core selling point, business model (optional), MVP scope; list three gap types (functional / engineering / operations, each tagged P0/P1/P2); give a three-phase roadmap (MVP → polish → commercial).
 
-### Stage 3: Produce deliverables
+**Stage ③ Deliverables:** fill `assets/showcase-template.md` with highlights, feature modules, tech-stack rationale, architecture, deployment; fill `assets/interview-prep-template.md` with 15 questions.
 
-**3.1 Project showcase document** — read `assets/showcase-template.md` and fill it:
+**Stage ④ Interview perspective:** given JD and resume, predict technical / project follow-ups an interviewer would ask; each outputs "what is tested → answer strategy → STAR framework".
 
-- Core highlights (5, each backed by code or architecture evidence)
-- Feature modules (grouped by business domain)
-- Tech stack (with rationale per choice)
-- Architecture design (overall + data flow + key decisions)
-- Evolution record and deployment steps
+## Four-stage reference
 
-Output file: `{project-name}-展示文档.md`
+| Stage | Name | Input | Key action | Output |
+|---|---|---|---|---|
+| ① | Deep code comprehension | project dir | script scan + model read + 8-dim scoring | code status profile (JSON + scores) |
+| ② | Commercial evolution | profile + your vision | gap analysis (P0/P1/P2) + roadmap | evolution plan |
+| ③ | Project showcase doc | profile + plan | fill highlights / modules / stack / arch | {project}-showcase.md |
+| ④ | Interview perspective | doc + JD + resume | 15 questions (must/targeted/follow-up) + STAR | {project}-interview-prep.md |
 
-**3.2 Interview prep guide** — read `assets/interview-prep-template.md` and generate 15 questions:
+## Configuration
 
-- Must-ask (5): introduce the project, your part, the hardest challenge, why a technology was chosen, what you would change
-- Targeted (5): tied to low-scoring code dimensions or gap items
-- Follow-up (5): tied to specific code files or design decisions
+The skill requires a **high-reasoning model**. **Recommended:**
 
-Each question: prompt → what is tested → answer strategy → STAR framework.
+- Claude Opus 4.6
+- DeepSeek v4 Pro
+- GPT-5.6 (or equivalent)
 
-Output file: `{project-name}-面试备考手册.md`
+A low-reasoning model still runs, but code comprehension will be shallow, commercial evolution generic, and interview predictions weak. At Stage 0 the skill prompts you to confirm the current model and suggests switching if it does not meet the bar.
 
-**3.3 Final confirmation:** show a summary of both documents and confirm accuracy and format.
+> 💡 Tip: set your preferred high-reasoning model as the WorkBuddy default, or switch manually before triggering the skill, for the best results.
+
+## Why this over alternatives?
+
+| Aspect | This skill | Raw code-analyzer | Hand-written README | Raw interview-prep |
+|---|---|---|---|---|
+| Code comprehension | ✅ Script + model depth | ⚠️ File-name dict only | ❌ Manual | ❌ Not applicable |
+| Demo→commercial evolution | ✅ Dialogue + roadmap | ❌ | ❌ | ❌ |
+| Showcase doc quality | ✅ Tailored, evidence-based | ⚠️ Templated, generic | ⚠️ Depends on writing | ❌ |
+| Interview prediction | ✅ Tied to this project's code | ❌ | ❌ | ⚠️ Generic JD only |
+| Hybrid architecture (token saving) | ✅ | ❌ | — | ❌ |
+
+**Where this fits:** you are not "replacing" code-project-analyzer or interview-prep — you are running all four steps (read code → evolve to commercial → write showcase → prep interview) in one pass. The scan script provides a deterministic map; the model does deep reasoning on it; the result is two documents you can actually show people.
 
 ## Bundled scripts
 
@@ -495,31 +437,26 @@ python scripts/parse_file.py ./resume.pdf
 
 Dependencies: `pdfplumber` or `pypdf` (PDF), `python-docx` (DOCX). The script prints the install command if a dependency is missing.
 
-## Hybrid architecture
+## Development
 
-The skill uses both a script and a model, not one alone:
+```bash
+# Clone
+git clone https://github.com/whishi47/project-showcase-enhancer.git
+cd project-showcase-enhancer
 
-- **Deterministic scan layer (script):** `scan_project.js` covers 60+ tech-stack marker files, 40+ directory-role mappings, automatic entry/config detection, and full package.json dependency extraction, producing JSON in seconds. It is stable, repeatable, and uses no tokens.
-- **Semantic reasoning layer (model):** on top of the scan, it performs real code comprehension and evolution, avoiding the template-filling weakness of pure dictionary matching.
+# Adjust the workflow by editing SKILL.md and the assets templates — no build step
+# To tune scanning, edit scripts/scan_project.js
+# To tune resume parsing, edit scripts/parse_file.py
+```
 
-Together, the scan gives the model a map, and the model does the deep analysis on that map.
-
-## Model requirements
-
-The skill depends on a high-reasoning model. **Use one of these:**
-
-- Claude Opus 4.6
-- DeepSeek v4 Pro
-- GPT-5.6 (or equivalent)
-
-A low-reasoning model may still run, but code comprehension will be shallow, commercial evolution generic, and interview predictions weak. At Stage 0 the skill prompts you to confirm the current model and suggests switching if it does not meet the bar.
-
-## Directory layout
+Directory layout:
 
 ```
 project-showcase-enhancer/
 ├── SKILL.md                          # Skill definition (workflow)
 ├── README.md                         # This document
+├── images/
+│   └── logo.svg                      # Logo used in this doc
 ├── scripts/
 │   ├── scan_project.js               # Project scanner: dictionary match → JSON
 │   └── parse_file.py                 # Resume parser: PDF/DOCX/TXT → text
@@ -528,45 +465,22 @@ project-showcase-enhancer/
     └── interview-prep-template.md    # Interview prep guide template
 ```
 
-## Example output
+## Publish
 
-**Project showcase document** excerpt:
+```bash
+# Option 1: SkillHub web
+#   Go to https://skillhub.cn , upload the packaged project-showcase-enhancer.zip
+#   Slug: project-showcase-enhancer, Display name: 个人项目包装与面试备战
 
-```markdown
-## Core highlights
-1. WebSocket-based real-time collaboration: src/server/ws.js manages connections
-   in a single Room and holds 200+ concurrent users without drops (see deploy/load-test.md).
-2. Type-safe end-to-end data flow: frontend and backend share TS interfaces in types/,
-   cutting integration errors by 80%.
+# Option 2: SkillHub CLI
+#   After login, run: skillhub publish ./project-showcase-enhancer
+
+# Repackage (requires skill-creator's package_skill.py)
+python package_skill.py ./project-showcase-enhancer ./dist
 ```
 
-**Interview prep guide** excerpt:
-
-```markdown
-### Must-ask 3: What was the hardest technical challenge?
-- Tested: depth of problem-solving and retrospection
-- Strategy: use STAR to tell one concrete difficulty and highlight your decision
-- STAR:
-  - Situation: real-time sync collided often on weak networks
-  - Task: keep multi-client data consistent
-  - Action: adopted CRDT (see src/sync/crdt.ts)
-  - Result: conflict rate dropped from 12% to 0.3%
-```
-
-## FAQ
-
-**Q: Must I use a high-reasoning model?**
-A: No, but it is recommended. A low-reasoning model still works, only with lower quality analysis and evolution.
-
-**Q: My project is not a web app. Will it work?**
-A: Yes. The scanner covers many tech-stack markers, and the model understands non-web projects (CLI tools, libraries, scripts).
-
-**Q: Does the resume have to be a PDF?**
-A: PDF, DOCX, and TXT are supported. The skill works without a resume; the prep guide just loses one JD-matching input.
-
-**Q: Will the output fabricate content?**
-A: No. The skill constrains highlights to code or architecture evidence, and interview questions to specific files in the project.
+> Bump the `version` field in SKILL.md before publishing.
 
 ## License
 
-Released under the MIT License. See [LICENSE](./LICENSE).
+MIT © 2026
